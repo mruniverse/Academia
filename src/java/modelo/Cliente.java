@@ -10,8 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,19 +35,19 @@ public class Cliente implements Serializable{
     @Column(length = 250, name = "email")
     private String email;
     
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<Treino> treino;
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private Treino treino;
     
     public Cliente(){
         this.id = 0;
         this.nome = "";
     }
     
-    public List<Treino> getTreino(){
+    public Treino getTreino(){
         return treino;
     }
-
-    public void setTreino(List<Treino> treino){
+    
+    public void setTreino(Treino treino){
         this.treino = treino;
     }
         

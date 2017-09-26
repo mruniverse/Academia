@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +21,7 @@ public class Treino implements Serializable {
     @Column(length = 10, name = "tipo_treino")
     private Integer treino;
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn (name = "cliente", referencedColumnName = "id")
     private Cliente cliente; 
     
@@ -52,6 +52,10 @@ public class Treino implements Serializable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public void add(Treino novoTreino) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

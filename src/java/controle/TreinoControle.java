@@ -68,4 +68,5 @@ public class TreinoControle implements Serializable {
         this.clienteDAO = clienteDAO;
     }
     
+
 }
