@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      <title>Academia</title>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <a href="css/css.css"/>
+    <h:head>
+        <title>Página Administrativa</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+      <h:body class="body">
+        <h1 align="center">Página Administrativa</h1>
+        <div align="center">
+            <table>
+                <tr>
+                    <td>
+                        <form method="get" action="cadastra-cliente.xhtml">
+                             <button id="button0" type="submit" class="btn btn-primary btn-lg">Gerenciar Clientes</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="get" action="cadastra-cliente.xhtml">
+                            <button id="button1" type="submit" class="btn btn-primary btn-lg">Gerenciar Instrutores</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form id="button2" method="get" action="cadastra-treino.xhtml">
+                             <button type="submit" class="btn btn-primary btn-lg">Gerenciar Treinos</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </h:body>
+</html>
