@@ -10,7 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -35,12 +36,17 @@ public class Cliente implements Serializable{
     @Column(length = 250, name = "email")
     private String email;
     
-    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn (name = "treino", referencedColumnName = "treino")
     private Treino treino;
     
     public Cliente(){
-        this.id = 0;
         this.nome = "";
+        this.cpf = "";
+        this.rg = "";
+        this.email = "";
+        this.endereco = "";
+        this.treino = new Treino();
     }
     
     public Treino getTreino(){
@@ -119,8 +125,8 @@ public class Cliente implements Serializable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 31 * hash + Objects.hashCode(this.getId());
-        hash = 31 * hash + Objects.hashCode(this.getNome());
+        hash = 31 * hash + Objects.hashCode(this.id);
+        hash = 31 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 

@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.CriteriaQuery;
 import modelo.Treino;
-import modelo.Treino;
 import util.JpaUtil;
 
 public class TreinoDAO {

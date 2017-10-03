@@ -2,13 +2,16 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,15 +22,13 @@ public class Treino implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Column(length = 10, name = "tipo_treino")
-    private Integer treino;
+    private String treino;
     
-    @OneToOne
-    @JoinColumn (name = "cliente", referencedColumnName = "id")
-    private Cliente cliente; 
+    @OneToMany(mappedBy = "treino",fetch = FetchType.EAGER,cascade = CascadeType.ALL, orphanRemoval = true)  
+    private List<Cliente> clientes; 
     
     public Treino(){
-        this.treino = 0;
-        this.cliente = new Cliente();
+        treino = "";
     }
     
     public Integer getId() {
@@ -38,29 +39,45 @@ public class Treino implements Serializable {
         this.id = id;
     }
 
-    public Integer getTreino() {
+    public String getTreino() {
         return treino;
     }
 
-    public void setTreino(Integer treino) {
+    public void setTreino(String treino) {
         this.treino = treino;
     }
-
-    public Cliente getCliente() {
-        return cliente;
+    
+    public List<Cliente> getCliente() {
+        return clientes;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(List<Cliente> treinos) {
+        this.clientes = clientes;
+    }
+    
+       @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 31 * hash + Objects.hashCode(this.id);
+        hash = 31 * hash + Objects.hashCode(this.treino);
+        return hash;
     }
 
-    public void add(Treino novoTreino) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-    
-    
-    
-
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Treino other = (Treino) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.treino, other.treino)) {
+            return false;
+        }
+        return true;
+}
 }

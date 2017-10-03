@@ -27,11 +27,11 @@
                                        itemLabel="#{item.nome}"/>  
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Nome do treino "/>
+                <p:outputLabel value="Treino "/>
                 <p:inputText value="#{treinoControle.treino.treino}"
-                             required="true" requiredMessage="Nome obrigatório"
+                             required="true" requiredMessage="Treino obrigatório"
                              maxlength="50" />
-                <p:commandButton value="Cancelar" action="index" immediate="true"/>
+                <p:commandButton value="Cancelar" action="cadastra-treino" immediate="true"/>
                 <p:commandButton value="Gravar" action="#{treinoControle.salvar}"
                                  update="@form" />
             </h:panelGrid>

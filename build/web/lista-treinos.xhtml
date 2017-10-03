@@ -29,7 +29,40 @@
                         <h:outputText value="#{cliente.treino.treino}"/>
                     </div>
                 </p:column>
-            </p:dataTable>            
-        </h:form>              
+                <p:column headerText="">
+                    <p:commandButton value="editar" action="#{clienteControle.preparaAlterar(cliente)}" 
+                                     onclick="PF('editarClienteDialog').show()"
+                                     update=":formAltera"/>
+                </p:column>
+            </p:dataTable>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:outputPanel style="width: 100%; text-align:center" layout="block"> 
+                    <p:commandButton value="sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                    <p:commandButton value="não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                </p:outputPanel>
+            </p:confirmDialog>
+        </h:form>
+        
+        <p:dialog id="editarCursoDialog" widgetVar="editarClienteDialog" modal="true" header="Alteração de cliente">   
+            <h:form id="formAltera">  
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Nome: "/>
+                    <p:inputText id="campoLogin"
+                                 value="#{treinoControle.clienteSelecionado}"
+                                 required="true" disabled="true"/>
+                    <h:outputLabel value="Treino: "/>
+                    <p:inputText value="#{cliente.treino.treino}" />
+                </h:panelGrid>
+                <p/>
+                <p:outputPanel style="width: 100%; text-align:center" >
+                    <p:commandButton value="Continuar" icon="ui-icon-check" style="width: 150px;" ajax="false"
+                                     action="#{treinoControle.alterar()}" 
+                                     styleClass="ui-state-hover"/> 
+                </p:outputPanel>
+                <p:outputPanel style="width: 100%; text-align:center" >
+                    <p:messages id="msgPopup" showIcon="false" closable="true" />
+                </p:outputPanel>  
+            </h:form >
+        </p:dialog>
     </h:body>
 </html>

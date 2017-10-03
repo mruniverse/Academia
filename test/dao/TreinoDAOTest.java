@@ -40,14 +40,14 @@ public class TreinoDAOTest {
     public void tearDown() {
     }
 
-    @Test
-       public void testListarTodos(){
-        List<Treino> lista = new TreinoDAO().listarTodos();
-        for (Treino t : lista){
-            Cliente c = t.getCliente();
-            System.out.println("Treino: "+ t.getTreino());
-            System.out.println("Cliente: "+ c.getNome());
-        }
-    }
+//    @Test
+//       public void testListarTodos(){
+//        List<Treino> lista = new TreinoDAO().listarTodos();
+//        for (Treino t : lista){
+//            Cliente c = t.getCliente();
+//            System.out.println("Treino: "+ t.getTreino());
+//            System.out.println("Cliente: "+ c.getNome());
+//        }
+//    }
     
 }

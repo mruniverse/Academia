@@ -2,81 +2,71 @@
 package controle;
 
 import dao.ClienteDAO;
+import dao.TreinoDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import modelo.Treino;
 import modelo.Cliente;
 
 @ManagedBean(name = "clienteControle")
 @ViewScoped
 public class ClienteControle implements Serializable {
-    private Cliente cliente;
-    private Cliente aux;
+    private Treino treinoSelecionado;
+    private List<Treino> treinos;
+    private Cliente novoCliente;
     private ClienteDAO dao;
-    private List<Cliente> clientes;
+    private TreinoDAO treinoDAO;
+    
     
     public ClienteControle(){
-        cliente = new Cliente();
-        dao = new ClienteDAO();
-        clientes = dao.listarTodos();
+        treinoSelecionado = new Treino();
+        treinoDAO = new TreinoDAO(); 
+        treinos = treinoDAO.listarTodos();
+        novoCliente = new Cliente();    
     }
     
-    public void cadastrarCliente(){
-        dao.inserir(cliente);
+    public void salvar(){
+        novoCliente.setTreino(treinoSelecionado);
+        treinoSelecionado.getCliente().add(novoCliente);
+        treinoDAO.alterar(treinoSelecionado);
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cliente cadastrado", null));
-        clientes.add(cliente);
-        cliente = new Cliente();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cliente cadastrada", null));
     }
     
-    public void preparaAlterar(Cliente c){
-        aux = c;
+    public Treino getTreinoSelecionado() {
+        return treinoSelecionado;
     }
-    
-    public void alterar(){
-        System.out.println("alteracao: " + aux.getNome());
-        dao.alterar(aux);
+
+    public void setTreinoSelecionado(Treino cursoSelecionado) {
+        this.treinoSelecionado = cursoSelecionado;
     }
-    
-    public void excluir(Cliente c){
-        dao.excluir(c);
-        clientes.remove(c);
+
+    public List<Treino> getTreinos() {
+        return treinos;
     }
-    
+
+    public void setTreinos(List<Treino> treinos) {
+        this.treinos = treinos;
+    }
 
     public Cliente getCliente() {
-        return cliente;
+        return novoCliente;
     }
 
-    public void setCliente(Cliente curso) {
-        this.cliente = curso;
+    public void setCliente(Cliente cliente) {
+        this.novoCliente = cliente;
     }
 
-    public ClienteDAO getDAO() {
-        return dao;
+    public TreinoDAO getTreinoDAO() {
+        return treinoDAO;
     }
 
-    public void setDAO(ClienteDAO dao) {
-        this.dao = dao;
-    }
-
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
-
-    public void setClientes(List<Cliente> cursos) {
-        this.clientes = clientes;
-    }
-
-    public Cliente getAux() {
-        return aux;
-    }
-
-    public void setAux(Cliente aux) {
-        this.aux = aux;
+    public void setTreinoDAO(TreinoDAO treinoDAO) {
+        this.treinoDAO = treinoDAO;
     }
     
 }
