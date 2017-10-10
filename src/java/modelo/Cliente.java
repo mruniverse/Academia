@@ -37,7 +37,7 @@ public class Cliente implements Serializable{
     private String email;
     
     @ManyToOne
-    @JoinColumn (name = "treino", referencedColumnName = "treino")
+    @JoinColumn (name = "treino", referencedColumnName = "id")
     private Treino treino;
     
     public Cliente(){
@@ -46,7 +46,7 @@ public class Cliente implements Serializable{
         this.rg = "";
         this.email = "";
         this.endereco = "";
-        this.treino = new Treino();
+        this.treino = null;
     }
     
     public Treino getTreino(){

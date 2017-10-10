@@ -33,8 +33,11 @@
                   <p:outputLabel for="cpf" value="Email:" />
                   <p:inputText id="email" value="#{clienteControle.cliente.email}" />
                   
+                  <p:outputLabel for="treino" value="Treino:" />
+                  <p:inputText id="treino" value="#{clienteControle.cliente.treino}" />
+                  
                   <p:commandButton  value="Cadastrar"
-                   action="#{clienteControle.salvar}"
+                   action="#{clienteControle.cadastrarCliente()}"
                    update="formCadastro, :formTabela" />
                    <p:messages showIcon="false" closable="true" />
    
@@ -58,6 +61,9 @@
                 </p:column>
                 <p:column headerText="Email: ">
                     <h:outputText value="#{cliente.email}"/>
+                </p:column>
+                <p:column headerText="Treino: ">
+                    <h:outputText value="#{cliente.treino.treino}"/>
                 </p:column>
                 <p:column headerText="">
                     <p:commandButton icon="ui-icon-trash" value="excluir"
@@ -99,6 +105,9 @@
                     <p:inputText value="#{clienteControle.aux.endereco}" />
                     <h:outputLabel value="Email: "/>
                     <p:inputText value="#{clienteControle.aux.email}" />
+                    <h:outputLabel value="Treino: "/>
+                    <p:inputText value="#{clienteControle.aux.treino}" />
+
                 </h:panelGrid>
                 <p/>
                 <p:outputPanel style="width: 100%; text-align:center" >

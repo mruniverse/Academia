@@ -22,13 +22,13 @@ public class Treino implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Column(length = 10, name = "tipo_treino")
-    private String treino;
+    private String tipo_treino;
     
     @OneToMany(mappedBy = "treino",fetch = FetchType.EAGER,cascade = CascadeType.ALL, orphanRemoval = true)  
     private List<Cliente> clientes; 
     
     public Treino(){
-        treino = "";
+        this.tipo_treino = "";
     }
     
     public Integer getId() {
@@ -40,18 +40,18 @@ public class Treino implements Serializable {
     }
 
     public String getTreino() {
-        return treino;
+        return tipo_treino;
     }
 
     public void setTreino(String treino) {
-        this.treino = treino;
-    }
+        this.tipo_treino = treino;
+    } 
     
-    public List<Cliente> getCliente() {
+    public List<Cliente> getClientes() {
         return clientes;
     }
 
-    public void setCliente(List<Cliente> treinos) {
+    public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
     }
     
@@ -59,7 +59,7 @@ public class Treino implements Serializable {
     public int hashCode() {
         int hash = 3;
         hash = 31 * hash + Objects.hashCode(this.id);
-        hash = 31 * hash + Objects.hashCode(this.treino);
+        hash = 31 * hash + Objects.hashCode(this.tipo_treino);
         return hash;
     }
 
@@ -75,7 +75,7 @@ public class Treino implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.treino, other.treino)) {
+        if (!Objects.equals(this.tipo_treino, other.tipo_treino)) {
             return false;
         }
         return true;
