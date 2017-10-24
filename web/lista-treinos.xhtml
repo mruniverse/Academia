@@ -17,23 +17,19 @@
     <h:body>
         <p/>
         <h:form id="formTabela">
-            <p:dataTable id="tabTreinos" emptyMessage="Nenhum treino cadastrado"
-                         var="cliente" value="#{treinoControle.clientes}">
+            <p:dataTable id="tabClientes" emptyMessage="Nenhum treino cadastrado"
+                         var="cliente" value="#{clienteControle.clientes}">
                 <p:column headerText="Nome: ">
                     <div align="center">
                         <h:outputText value="#{cliente.getNome()}"/>
                     </div>
                 </p:column>
-                <p:column headerText="Treino: ">
-                    <div align="center">
-                        <h:outputText value="#{cliente.treino.treino}"/>
-                    </div>
-                </p:column>
                 <p:column headerText="">
-                    <p:commandButton value="editar" action="#{clienteControle.preparaAlterar(cliente)}" 
-                                     onclick="PF('editarClienteDialog').show()"
+                    <p:commandButton value="Ver Treinos" action="#{clienteControle.preparaListar(cliente)}" 
+                                     onclick="PF('verTreinosDialog').show()"
                                      update=":formAltera"/>
                 </p:column>
+                
             </p:dataTable>
             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                 <p:outputPanel style="width: 100%; text-align:center" layout="block"> 
@@ -43,20 +39,20 @@
             </p:confirmDialog>
         </h:form>
         
-        <p:dialog id="editarCursoDialog" widgetVar="editarClienteDialog" modal="true" header="Alteração de cliente">   
+        <p:dialog id="verTreinosDialog" widgetVar="verTreinosDialog" modal="true" header="Lista de treinos">   
             <h:form id="formAltera">  
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Nome: "/>
-                    <p:inputText id="campoLogin"
-                                 value="#{treinoControle.clienteSelecionado}"
-                                 required="true" disabled="true"/>
-                    <h:outputLabel value="Treino: "/>
-                    <p:inputText value="#{cliente.treino.treino}" />
-                </h:panelGrid>
+                <p:dataTable id="tabTreinos" emptyMessage="Nenhum treino cadastrado"
+                             var="treinos" value="#{clienteControle.aux.treinos}">
+                <p:column headerText="Treino: ">
+                    <div align="center">
+                        <h:outputText value="#{treinos.treino}"/>
+                    </div>
+                </p:column>                
+            </p:dataTable>
                 <p/>
                 <p:outputPanel style="width: 100%; text-align:center" >
                     <p:commandButton value="Continuar" icon="ui-icon-check" style="width: 150px;" ajax="false"
-                                     action="#{treinoControle.alterar()}" 
+                                     onclick="PF('verTreinosDialog').hide()"
                                      styleClass="ui-state-hover"/> 
                 </p:outputPanel>
                 <p:outputPanel style="width: 100%; text-align:center" >

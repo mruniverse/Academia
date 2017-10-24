@@ -11,8 +11,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "admin")
-public class Admin implements Serializable {
+@Table(name = "administrador")
+public class Administrador implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo")
@@ -29,7 +29,6 @@ public class Admin implements Serializable {
     public Integer getCodigo() {
         return codigo;
     }
-    
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
@@ -75,7 +74,7 @@ public class Admin implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Admin other = (Admin) obj;
+        final Administrador other = (Administrador) obj;
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }

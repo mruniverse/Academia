@@ -4,13 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/web/index.xhtml</file>
-            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/web/cadastra-treino.xhtml</file>
-            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/src/java/modelo/Cliente.java</file>
+            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/web/pagina-adm.xhtml</file>
+            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/src/java/dao/AdministradorDAO.java</file>
+            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/src/java/modelo/Administrador.java</file>
+            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/src/java/controle/IndexController.java</file>
             <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/src/java/META-INF/persistence.xml</file>
-            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/src/java/controle/ClienteControle.java</file>
-            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/src/java/modelo/Treino.java</file>
             <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/web/cadastra-cliente.xhtml</file>
-            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/src/java/controle/TreinoControle.java</file>
+            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/src/java/dao/DaoGenerico.java</file>
+            <file>file:/C:/Users/a120133/Documents/NetBeansProjects/WebApplication1/web/lista-treinos.xhtml</file>
         </group>
     </open-files>
 </project-private>

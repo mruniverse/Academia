@@ -2,16 +2,14 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,14 +19,23 @@ public class Treino implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    @Column(length = 10, name = "tipo_treino")
-    private String tipo_treino;
+    @Column(length = 250, name = "tipo_treino")
+    private String treino;
     
-    @OneToMany(mappedBy = "treino",fetch = FetchType.EAGER,cascade = CascadeType.ALL, orphanRemoval = true)  
-    private List<Cliente> clientes; 
+    @ManyToOne  // muitos treinos para um cliente
+    @JoinColumn (name = "cliente", referencedColumnName = "id")
+    private Cliente cliente; 
+    
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     
     public Treino(){
-        this.tipo_treino = "";
+        this.treino = "";
     }
     
     public Integer getId() {
@@ -40,26 +47,18 @@ public class Treino implements Serializable {
     }
 
     public String getTreino() {
-        return tipo_treino;
+        return treino;
     }
 
     public void setTreino(String treino) {
-        this.tipo_treino = treino;
+        this.treino = treino;
     } 
-    
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
-
-    public void setClientes(List<Cliente> clientes) {
-        this.clientes = clientes;
-    }
     
        @Override
     public int hashCode() {
         int hash = 3;
         hash = 31 * hash + Objects.hashCode(this.id);
-        hash = 31 * hash + Objects.hashCode(this.tipo_treino);
+        hash = 31 * hash + Objects.hashCode(this.treino);
         return hash;
     }
 
@@ -75,9 +74,9 @@ public class Treino implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.tipo_treino, other.tipo_treino)) {
+        if (!Objects.equals(this.treino, other.treino)) {
             return false;
         }
         return true;
-}
+    }
 }

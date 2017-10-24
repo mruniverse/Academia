@@ -4,13 +4,12 @@
     <class>modelo.Cliente</class>
     <class>modelo.Instrutor</class>
     <class>modelo.Treino</class>
-    <class>modelo.Administrador</class>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Academia"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.password" value="postgres"/>
-      <!--EclipseLink should create the database schema automatically-->
+       <!--EclipseLink should create the database schema automatically--> 
       <!--<property name="eclipselink.ddl-generation" value="create-tables"/>-->
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
       <property name="eclipselink.ddl-generation.output-mode" value="database"/>

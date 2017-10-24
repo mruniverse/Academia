@@ -7,11 +7,11 @@ import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,9 +36,10 @@ public class Cliente implements Serializable{
     @Column(length = 250, name = "email")
     private String email;
     
-    @ManyToOne
-    @JoinColumn (name = "treino", referencedColumnName = "id")
-    private Treino treino;
+    @OneToMany(mappedBy = "cliente", 
+    fetch = FetchType.EAGER, 
+    cascade = CascadeType.ALL, orphanRemoval = true)  
+    private List<Treino> treinos; 
     
     public Cliente(){
         this.nome = "";
@@ -46,15 +47,15 @@ public class Cliente implements Serializable{
         this.rg = "";
         this.email = "";
         this.endereco = "";
-        this.treino = null;
+//        this.treino = null;
     }
-    
-    public Treino getTreino(){
-        return treino;
+
+    public List<Treino> getTreinos() {
+        return treinos;
     }
-    
-    public void setTreino(Treino treino){
-        this.treino = treino;
+
+    public void setTreinos(List<Treino> treinos) {
+        this.treinos = treinos;
     }
         
     public Integer getId(){

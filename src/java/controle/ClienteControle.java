@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import modelo.Cliente;
+import modelo.Treino;
 
 @ManagedBean(name = "clienteControle")
 @ViewScoped
@@ -17,9 +18,11 @@ public class ClienteControle implements Serializable {
     private Cliente aux;
     private ClienteDAO dao;
     private List<Cliente> clientes;
+    private Treino treino;
     
     public ClienteControle(){
         cliente = new Cliente();
+        treino = new Treino();
         dao = new ClienteDAO();
         clientes = dao.listarTodos();
     }
@@ -41,9 +44,21 @@ public class ClienteControle implements Serializable {
         dao.alterar(aux);
     }
     
+    public void preparaListar(Cliente c){
+        aux = c;
+    }
+    
     public void excluir(Cliente c){
         dao.excluir(c);
         clientes.remove(c);
+    }
+
+    public Treino getTreino() {
+        return treino;
+    }
+
+    public void setTreino(Treino treino) {
+        this.treino = treino;
     }
     
 

@@ -18,7 +18,6 @@ public class TreinoControle implements Serializable {
     private List<Cliente> clientes;
     private Treino novoTreino;
     private ClienteDAO clienteDAO;
-    private Treino aux;
     
     
     public TreinoControle(){
@@ -28,14 +27,14 @@ public class TreinoControle implements Serializable {
         novoTreino = new Treino();    
     }
     
-//     public void salvarNovoTreino(){
-//        clienteDAO.inserir(aux);
-//        FacesContext context = FacesContext.getCurrentInstance();
-//        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Curso cadastrado", null));
-//        cursos.add(curso);
-//        curso = new Curso();
-//}
-    
+    public void salvar(){
+        novoTreino.setCliente(clienteSelecionado);
+        clienteSelecionado.getTreinos().add(novoTreino);
+        clienteDAO.alterar(clienteSelecionado);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Treino cadastrado", null));
+    }
+
     public Cliente getClienteSelecionado() {
         return clienteSelecionado;
     }
@@ -52,12 +51,12 @@ public class TreinoControle implements Serializable {
         this.clientes = clientes;
     }
 
-    public Treino getTreino() {
+    public Treino getNovoTreino() {
         return novoTreino;
     }
 
-    public void setTreino(Treino treino) {
-        this.novoTreino = treino;
+    public void setNovoTreino(Treino novoTreino) {
+        this.novoTreino = novoTreino;
     }
 
     public ClienteDAO getClienteDAO() {
@@ -67,5 +66,4 @@ public class TreinoControle implements Serializable {
     public void setClienteDAO(ClienteDAO clienteDAO) {
         this.clienteDAO = clienteDAO;
     }
-    
 }

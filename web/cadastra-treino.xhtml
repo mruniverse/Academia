@@ -28,9 +28,9 @@
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Treino "/>
-                <p:inputText value="#{treinoControle.treino.treino}"
+                <p:inputText value="#{treinoControle.novoTreino.treino}"
                              required="true" requiredMessage="Treino obrigatório"
-                             maxlength="50" />
+                             maxlength="250" />
                 <p:commandButton value="Cancelar" action="cadastra-treino" immediate="true"/>
                 <p:commandButton value="Gravar" action="#{treinoControle.salvar}"
                                  update="@form" />
